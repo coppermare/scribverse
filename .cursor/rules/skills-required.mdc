@@ -1,0 +1,12 @@
+---
+description: "Read AGENTS.md first. Follow project conventions."
+alwaysApply: true
+---
+
+# scribverse: contributor context
+
+Before starting work in this repository:
+
+1. **Read `AGENTS.md`** at the repository root (single entry point for humans and agents). It includes product scope and what not to build.
+
+Do not add dependencies, auth, databases, or generative AI features unless the project maintainer has agreed in an issue or PR.

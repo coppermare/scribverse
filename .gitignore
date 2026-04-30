@@ -1,0 +1,58 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/playwright-report/
+/test-results/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# IDE / agent local symlinks (skills live outside this repo)
+.windsurf/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*-player-script.js
+test-output.css
+
+# env (never commit secrets; template is tracked)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+!tsconfig.json
+!jsconfig.json
+
+# ESLint (re-include if a global *.json gitignore hides this file)
+!.eslintrc.json
+
+# Chrome extension (omitted from this repo for now; still built via npm workspaces locally)
+/extension/

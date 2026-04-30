@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Scrollbar track stays transparent; thumb only (WebKit + Firefox). */
+  .scrollbar-track-transparent {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(0 0 0 / 0.22) transparent;
+  }
+  .dark .scrollbar-track-transparent {
+    scrollbar-color: rgb(255 255 255 / 0.2) transparent;
+  }
+  .scrollbar-track-transparent::-webkit-scrollbar {
+    width: 7px;
+  }
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-track-transparent::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: rgb(0 0 0 / 0.2);
+  }
+  .dark .scrollbar-track-transparent::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 0.18);
+  }
+
+  /* Transcription loading: hand-scribble icon + “ink” sweep on placeholder lines */
+  @keyframes scribverse-scribble-dash {
+    to {
+      stroke-dashoffset: -72;
+    }
+  }
+  @keyframes scribverse-scribble-wobble {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-1.2deg);
+    }
+    50% {
+      transform: translate(0.5px, -0.5px) rotate(1deg);
+    }
+  }
+  @keyframes scribverse-cue-shimmer {
+    0% {
+      background-position: 120% 0;
+    }
+    100% {
+      background-position: -120% 0;
+    }
+  }
+  .scribverse-scribble-loader {
+    animation: scribverse-scribble-wobble 2.6s ease-in-out infinite;
+  }
+  .scribverse-scribble-loader__path {
+    stroke-dasharray: 14 58;
+    animation: scribverse-scribble-dash 1.12s linear infinite;
+  }
+  .scribverse-scribble-cue {
+    background: linear-gradient(
+      105deg,
+      var(--muted) 0%,
+      var(--muted) 38%,
+      color-mix(in oklch, var(--primary) 32%, var(--muted)) 50%,
+      var(--muted) 62%,
+      var(--muted) 100%
+    );
+    background-size: 220% 100%;
+    animation: scribverse-cue-shimmer 2.1s ease-in-out infinite;
+  }
+}
+
+@layer base {
+  :root {
+    --background: oklch(0.97 0.025 75);
+    --foreground: oklch(0.16 0.02 55);
+    --card: oklch(0.99 0.015 75);
+    --card-foreground: oklch(0.16 0.02 55);
+    --popover: oklch(0.99 0.015 75);
+    --popover-foreground: oklch(0.16 0.02 55);
+    --primary: oklch(0.67 0.16 58);
+    --primary-foreground: oklch(0.99 0.02 95);
+    --secondary: oklch(0.94 0.03 70);
+    --secondary-foreground: oklch(0.22 0.03 55);
+    --muted: oklch(0.93 0.03 72);
+    --muted-foreground: oklch(0.45 0.03 55);
+    --accent: oklch(0.93 0.03 72);
+    --accent-foreground: oklch(0.22 0.03 55);
+    --destructive: oklch(0.58 0.22 27);
+    --destructive-foreground: oklch(0.99 0.02 95);
+    --border: oklch(0.88 0.035 72);
+    --input: oklch(0.88 0.035 72);
+    --ring: oklch(0.67 0.16 58);
+    --chart-1: oklch(0.88 0.15 92);
+    --chart-2: oklch(0.77 0.16 70);
+    --chart-3: oklch(0.67 0.16 58);
+    --chart-4: oklch(0.56 0.15 49);
+    --chart-5: oklch(0.47 0.12 46);
+    --radius: 0.625rem;
+
+    --stack-layer-1: oklch(0.86 0.10 65);
+    --stack-layer-2: oklch(0.93 0.08 75);
+    --card-hover: oklch(0.98 0.03 70);
+    --stack-layer-border: transparent;
+    --stack-layer-shadow-1: 0 6px 14px rgba(0, 0, 0, 0.06);
+    --stack-layer-shadow-2: 0 10px 24px rgba(0, 0, 0, 0.14);
+  }
+  .dark {
+    --background: oklch(0.17 0.025 50);
+    --foreground: oklch(0.93 0.02 75);
+    --card: oklch(0.22 0.03 50);
+    --card-foreground: oklch(0.93 0.02 75);
+    --popover: oklch(0.22 0.03 50);
+    --popover-foreground: oklch(0.93 0.02 75);
+    --primary: oklch(0.77 0.16 70);
+    --primary-foreground: oklch(0.28 0.07 46);
+    --secondary: oklch(0.27 0.025 50);
+    --secondary-foreground: oklch(0.93 0.02 75);
+    --muted: oklch(0.26 0.03 50);
+    --muted-foreground: oklch(0.62 0.03 65);
+    --accent: oklch(0.32 0.035 50);
+    --accent-foreground: oklch(0.93 0.02 75);
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.99 0.02 95);
+    --border: oklch(1 0.02 60 / 14%);
+    --input: oklch(1 0.02 60 / 18%);
+    --ring: oklch(0.77 0.16 70);
+    --chart-1: oklch(0.88 0.15 92);
+    --chart-2: oklch(0.77 0.16 70);
+    --chart-3: oklch(0.67 0.16 58);
+    --chart-4: oklch(0.56 0.15 49);
+    --chart-5: oklch(0.47 0.12 46);
+
+    --stack-layer-1: oklch(0.38 0.05 58);
+    --stack-layer-2: oklch(0.44 0.05 65);
+    --card-hover: oklch(0.36 0.03 65);
+    --stack-layer-border: transparent;
+    --stack-layer-shadow-1: 0 6px 14px rgba(0, 0, 0, 0.5);
+    --stack-layer-shadow-2: 0 10px 24px rgba(0, 0, 0, 0.6);
+  }
+  * {
+    @apply border-border;
+  }
+  h1, h2 {
+    font-family: var(--font-heading), Georgia, serif;
+  }
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+  /* Match theme behind rubber-band / overscroll (especially mobile). html often shows through. */
+  html {
+    background-color: var(--background);
+    min-height: 100%;
+    min-height: 100dvh;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition-property: background-color, color;
+    transition-duration: 480ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Root crossfade when swapping light/dark (Chrome / Edge / Safari 18+). Falls back to body transition above. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer components {
+  .stack-layer-1 {
+    background: var(--stack-layer-1);
+    border: 1px solid var(--stack-layer-border);
+    box-shadow: var(--stack-layer-shadow-1);
+  }
+  .stack-layer-2 {
+    background: var(--stack-layer-2);
+    border: 1px solid var(--stack-layer-border);
+    box-shadow: var(--stack-layer-shadow-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
